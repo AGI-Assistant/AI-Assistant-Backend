@@ -1,7 +1,5 @@
 # Project Title
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-
 One Paragraph of project description goes here. Explain what the project is about, what it does, and the value it provides to users.
 
 ## Table of Contents
