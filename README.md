@@ -1,6 +1,13 @@
-# Project Title
+# AI Assistant
 
-One Paragraph of project description goes here. Explain what the project is about, what it does, and the value it provides to users.
+## Project Structure
+### AI-Assistant-Backend
+This repository holds the core application and connects all the different components.
+### AI-Assistant-Model
+This repository holds everything required to run the machine learning model.
+### AI-Assistant-Frontend
+This repository holds everything required to run the frontend of the application.
+
 
 ## Table of Contents
 
