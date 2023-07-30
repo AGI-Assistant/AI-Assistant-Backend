@@ -1,11 +1,11 @@
-# AI Assistant
+# AGI Assistant
 
 ## Project Structure
-### AI-Assistant-Backend
+### AGI-Assistant-Backend
 This repository holds the core application and connects all the different components.
-### AI-Assistant-Model
+### AGI-Assistant-Model
 This repository holds everything required to run the machine learning model.
-### AI-Assistant-Frontend
+### AGI-Assistant-Frontend
 This repository holds everything required to run the frontend of the application.
 
 
