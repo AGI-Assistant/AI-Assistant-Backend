@@ -35,8 +35,11 @@ Model:     https://github.com/Knaeckebrothero/AGI-Assistant-Model <br>
 https://lucid.app/documents#/documents?folder_id=336580960 <br>
 
 
-
 ## AGI Backend Quarkus
+How to start the application:
+1.run 'docker-compose up' in the directory of the docker-compose file
+2. run './gradlew quarkusDev' in the directory of the quarkus project
+3. you are ready to go
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
