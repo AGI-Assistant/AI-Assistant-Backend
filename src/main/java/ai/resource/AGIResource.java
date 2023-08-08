@@ -1,11 +1,9 @@
 package ai.resource;
-
 import ai.model.Prompt;
 import ai.service.PromptService;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
-
 import java.util.UUID;
 
 @Path("/ai")
