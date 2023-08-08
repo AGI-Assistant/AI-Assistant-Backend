@@ -20,14 +20,16 @@ public class AGIResource {
     @Produces(MediaType.APPLICATION_JSON)
     public UUID sendPrompt(Prompt prompt) {
 
-
+        System.out.println(prompt);
         return promptService.addPrompt(prompt);
     }
 
     @GET
     @Path("/{id}")
-    @Produces(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.APPLICATION_JSON)
     public Prompt getPrompt(UUID id) {
+
+        System.out.println(id);
         return promptService.findPromptById(id);
     }
 
