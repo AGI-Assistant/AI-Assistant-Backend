@@ -1,0 +1,28 @@
+version: "3.3"
+name: postgres
+
+networks:
+  redpanda-network:
+    name: redpanda-network
+    driver: bridge
+
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: example
+      POSTGRES_USER: example
+      POSTGRES_DB: example
+    ports:
+      - "5432:5432"
+    networks:
+      - redpanda-network
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+    networks:
+      - redpanda-network
