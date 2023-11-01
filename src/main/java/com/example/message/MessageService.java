@@ -50,7 +50,7 @@ public class MessageService {
 
     private Content requestAiModel(String prompt){
 
-        return aiModelClient.generatePrompt(new Generate(prompt));
+        return aiModelClient.generate(new Generate(prompt));
     }
 
 
