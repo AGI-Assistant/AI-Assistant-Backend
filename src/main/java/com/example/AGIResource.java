@@ -1,6 +1,5 @@
 package com.example;
 
-import com.example.dto.Generate;
 import com.example.message.Message;
 import com.example.message.MessageService;
 import jakarta.inject.Inject;
@@ -10,7 +9,7 @@ import jakarta.ws.rs.core.MediaType;
 import java.util.UUID;
 
 @Path("/hello")
-public class ExampleResource {
+public class AGIResource {
 
     @Inject
     MessageService promptService;
@@ -24,17 +23,27 @@ public class ExampleResource {
 
 
     @GET
-    @Path("/test")
+    @Path("/get/history")
     @Produces(MediaType.TEXT_PLAIN)
-    public String getHistory(@HeaderParam("apiKey") String apiKey, @HeaderParam("conversationID") String conversationID) {
+    public String getChatHistory( @HeaderParam("conversationID") String conversationID) {
 
-        System.out.println(apiKey+conversationID);
+
+
+        return "functions";
+    }
+
+    @GET
+    @Path("/get/polling")
+    @Produces(MediaType.TEXT_PLAIN)
+    public String startPolling( @HeaderParam("conversationID") String conversationID) {
+
+
 
         return "functions";
     }
 
 
-    @Path("/chat")
+    @Path("/post/message")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
@@ -45,5 +54,7 @@ public class ExampleResource {
         System.out.println(message);
         return promptService.addMessage(message);
     }
+
+
 
 }
