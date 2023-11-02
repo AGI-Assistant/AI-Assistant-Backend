@@ -48,10 +48,10 @@ public class AGIResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Message sendMessage(@HeaderParam("apiKey") String apiKey, @HeaderParam("conversationID") String conversationID, Message message) {
+    public Message sendMessage( Message message) {
 
-        message.setConversationID(UUID.fromString(conversationID));
-        System.out.println(apiKey+conversationID);
+        message.setConversationID(UUID.randomUUID());
+
         System.out.println(message);
         return promptService.addMessage(message);
     }
