@@ -23,11 +23,11 @@ public class Message extends PanacheEntityBase {
     private long timestamp;
 
 
-    public Message( String textContent, Boolean isUser) {
+    public Message( String textContent, Boolean isUser, long timestamp) {
         this.messageID = UUID.randomUUID();
         this.isUser = isUser;
         this.textContent = textContent;
-        this.timestamp = System.currentTimeMillis() / 1000L;
+        this.timestamp = timestamp;
 
     }
 

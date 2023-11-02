@@ -40,7 +40,7 @@ public class MessageService {
 
         //TODO implement messageID
         //Uncomment this to test it with the ai model
-        Message aiResponse = new Message(response.getContent(), false);
+        Message aiResponse = new Message(response.getContent(), false, System.currentTimeMillis() / 1000L; );
         entityManager.merge(aiResponse);
 
          entityManager.merge(message);
