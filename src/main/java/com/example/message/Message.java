@@ -20,11 +20,14 @@ public class Message extends PanacheEntityBase {
     private Boolean isUser;
     private String textContent;
 
+    private long timestamp;
+
 
     public Message( String textContent, Boolean isUser) {
         this.messageID = UUID.randomUUID();
         this.isUser = isUser;
         this.textContent = textContent;
+        this.timestamp = System.currentTimeMillis() / 1000L;
 
     }
 
@@ -33,6 +36,7 @@ public class Message extends PanacheEntityBase {
         this.isUser = isUser;
         this.textContent = textContent;
         this.conversationID = conversationID;
+        this.timestamp = System.currentTimeMillis() / 1000L;
 
     }
 
@@ -42,6 +46,7 @@ public class Message extends PanacheEntityBase {
 
     public Message() {
         this.messageID = UUID.randomUUID();
+        this.timestamp = System.currentTimeMillis() / 1000L;
     }
 
     public Boolean getIsUser() {
