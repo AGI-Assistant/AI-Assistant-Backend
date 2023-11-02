@@ -5,6 +5,7 @@ import com.example.message.MessageService;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 
 import java.util.UUID;
 
@@ -35,11 +36,11 @@ public class AGIResource {
     @GET
     @Path("/get/polling")
     @Produces(MediaType.TEXT_PLAIN)
-    public String startPolling( @HeaderParam("conversationID") String conversationID) {
+    public Response startPolling(@HeaderParam("conversationID") String conversationID) {
 
 
 
-        return "functions";
+        return Response.noContent().build();
     }
 
 
