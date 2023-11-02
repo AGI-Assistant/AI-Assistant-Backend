@@ -8,7 +8,7 @@ import jakarta.ws.rs.core.MediaType;
 
 import java.util.UUID;
 
-@Path("/hello")
+@Path("/api")
 public class AGIResource {
 
     @Inject
