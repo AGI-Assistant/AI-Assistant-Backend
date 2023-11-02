@@ -1,7 +1,7 @@
-package com.example;
+package ai;
 
-import com.example.message.Message;
-import com.example.message.MessageService;
+import ai.message.Message;
+import ai.message.MessageService;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
@@ -48,7 +48,7 @@ public class AGIResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Message sendMessage( Message message) {
+    public Message sendMessage(Message message) {
 
         message.setConversationID(UUID.randomUUID());
 

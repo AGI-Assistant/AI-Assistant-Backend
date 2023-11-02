@@ -1,9 +1,9 @@
-package com.example.resource;
+package ai.resource;
 
 
-import com.example.dto.Generate;
-import com.example.message.Message;
-import com.example.message.MessageService;
+import ai.dto.Generate;
+import ai.message.Message;
+import ai.message.MessageService;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;

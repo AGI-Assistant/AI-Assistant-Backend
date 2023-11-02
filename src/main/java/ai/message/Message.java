@@ -1,4 +1,4 @@
-package com.example.message;
+package ai.message;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.persistence.*;

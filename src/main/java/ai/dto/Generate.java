@@ -1,4 +1,4 @@
-package com.example.dto;
+package ai.dto;
 
 
 public class Generate  {

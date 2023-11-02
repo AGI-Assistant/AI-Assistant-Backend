@@ -1,10 +1,10 @@
-package com.example.message;
+package ai.message;
 
 
 
-import com.example.client.AiModelClient;
-import com.example.dto.Content;
-import com.example.dto.Generate;
+import ai.dto.Content;
+import ai.client.AiModelClient;
+import ai.dto.Generate;
 import io.quarkus.hibernate.orm.panache.Panache;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;

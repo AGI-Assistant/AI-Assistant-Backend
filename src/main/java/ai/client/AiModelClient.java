@@ -1,16 +1,15 @@
-package com.example.client;
+package ai.client;
 
 
 
 
 
 
-import com.example.dto.Content;
-import com.example.dto.Generate;
+import ai.dto.Content;
+import ai.dto.Generate;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
-import org.eclipse.microprofile.rest.client.annotation.ClientHeaderParam;
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 
 

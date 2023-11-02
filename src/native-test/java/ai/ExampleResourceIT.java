@@ -1,4 +1,4 @@
-package com.example;
+package ai;
 
 import io.quarkus.test.junit.QuarkusIntegrationTest;
 

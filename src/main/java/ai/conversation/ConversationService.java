@@ -1,4 +1,4 @@
-package com.example.conversation;
+package ai.conversation;
 
 import io.quarkus.hibernate.orm.panache.Panache;
 import jakarta.enterprise.context.ApplicationScoped;
