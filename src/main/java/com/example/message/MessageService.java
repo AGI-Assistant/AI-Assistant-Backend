@@ -43,8 +43,8 @@ public class MessageService {
         Message aiResponse = new Message(response.getContent(), false);
         entityManager.merge(aiResponse);
 
-        return entityManager.merge(message);
-
+         entityManager.merge(message);
+return aiResponse;
 
     }
 
