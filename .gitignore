@@ -53,6 +53,7 @@ coverage.xml
 .ropeproject
 
 # Django stuff:
+*.log
 *.pot
 
 # Sphinx documentation
@@ -60,7 +61,7 @@ docs/_build/
 
 # Java/Spring Boot
 *.class
-*.log
+
 *.ctxt
 .mtj.tmp/
 *.jar
@@ -70,6 +71,7 @@ hs_err_pid*
 
 # JavaScript/React
 logs
+
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
@@ -92,15 +94,22 @@ typings/
 .node_repl_history
 *.tgz
 .yarn-integrity
+.env
+/.quarkus/cli/plugins/
+
 
 # Gradle
 .gradle/
 
+
 # Eclipse
+
 .classpath
 .settings/
 
+
 # IntelliJ
+
 *.ipr
 *.iml
 *.iws
@@ -122,9 +131,3 @@ nb-configuration.xml
 # patch
 *.orig
 *.rej
-
-# Local environment
-.env
-
-# Plugin directory
-/.quarkus/cli/plugins/

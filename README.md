@@ -1,86 +1,31 @@
-# AGI Assistant
-## Table of Contents
-- [Installation](#installation)
-- [Usage](#usage)
-- [Project Structure](#project-structure)
-  - [AGI-Assistant-Backend](#agi-assistant-backend)
-  - [AGI-Assistant-Model](#agi-assistant-model)
-  - [AGI-Assistant-Frontend](#agi-assistant-frontend)
-- [References](#references)
-  - [Lucidchart](#lucidchart)
-
-## Installation
-...
-
-## Usage
-### AGI Backend Quarkus
-How to start the application:
-1. run 'docker-compose up' in the directory of the docker-compose file
-2. run './gradlew quarkusDev' in the directory of the quarkus project
-3. you are ready to go
-
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
-If you want to learn more about Quarkus, please visit its website: [Quarkus](https://quarkus.io/).
-
-### Running the application in dev mode
-You can run your application in dev mode that enables live coding using:
-```shell script
-./gradlew quarkusDev
-```
-
-> **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at http://localhost:8080/q/dev/.
-
-### Packaging and running the application
-The application can be packaged using:
-```shell script
-./gradlew build
-```
-It produces the `quarkus-run.jar` file in the `build/quarkus-app/` directory.
-Be aware that it’s not an _über-jar_ as the dependencies are copied into the `build/quarkus-app/lib/` directory.
-
-The application is now runnable using `java -jar build/quarkus-app/quarkus-run.jar`.
-
-If you want to build an _über-jar_, execute the following command:
-```shell script
-./gradlew build -Dquarkus.package.type=uber-jar
-```
-The application, packaged as an _über-jar_, is now runnable using `java -jar build/*-runner.jar`.
-
-### Creating a native executable
-You can create a native executable using:
-```shell script
-./gradlew build -Dquarkus.package.type=native
-```
-Or, if you don't have GraalVM installed, you can run the native executable build in a container using:
-```shell script
-./gradlew build -Dquarkus.package.type=native -Dquarkus.native.container-build=true
-```
-You can then execute your native executable with: `./build/agi-1.0-SNAPSHOT-runner`
-
-If you want to learn more about building native executables, please consult [Quarkus Gradle Tooling Guide](https://quarkus.io/guides/gradle-tooling).
-
-## Related Guides
-RESTEasy Reactive ([guide](https://quarkus.io/guides/resteasy-reactive)):
-A Jakarta REST implementation utilizing build time processing and Vert.x.
-This extension is not compatible with the quarkus-resteasy extension,
-or any of the extensions that depend on it.
+# AI Assistant
 
 ## Project Structure
-### AGI-Assistant-Backend
-This repository handles the data traffic and connects all the different components. <br>
-### AGI-Assistant-Frontend
-This repository holds everything required to run the frontend of the application. <br>
-### AGI-Assistant-Model
-This repository holds everything required to run the machine learning model. <br>
+### AI-Assistant-Backend
+This repository holds the core application and connects all the different components.<br>
+https://github.com/Knaeckebrothero/AI-Assistant-Backend <br>
+### AI-Assistant-Model
+This repository holds everything required to run the machine learning model.<br>
+https://github.com/Knaeckebrothero/AI-Assistant-Model <br>
+### AI-Assistant-Frontend
+This repository holds everything required to run the frontend of the application.<br>
+https://github.com/Knaeckebrothero/AI-Assistant-Frontend <br>
 
-## References
-### Repositories
-Backend:   https://github.com/Knaeckebrothero/AGI-Assistant-Backend <br>
-Frontend:  https://github.com/Knaeckebrothero/AGI-Assistant-Frontend <br>
-Model:     https://github.com/Knaeckebrothero/AGI-Assistant-Model <br>
+![Backend](https://github.com/Knaeckebrothero/AGI-Assistant-Backend/assets/104355357/45820b4e-676c-4a97-85b6-d3e9cb05cb8a)
 
-### Google Drive
-https://drive.google.com/drive/folders/1Y2YULB6s9xqoHco0fPvO1QiQ1kFSJ2QU?usp=sharing
+## Table of Contents
 
-### Lucidchart
-https://lucid.app/documents#/documents?folder_id=336580960 <br>
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
+- [Acknowledgements](#acknowledgements)
+
+## Installation
+
+Describe the installation process here. Include any pre-requisites, required libraries, and how to get the development environment running.
+
+```bash
+# Example command line instructions
+pip install -r requirements.txt

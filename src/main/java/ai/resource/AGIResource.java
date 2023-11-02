@@ -1,40 +1,44 @@
 package ai.resource;
-import ai.model.Prompt;
-import ai.service.PromptService;
+
+
+import ai.dto.Generate;
+import ai.message.Message;
+import ai.message.MessageService;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
-import jakarta.ws.rs.core.Response;
 
-import java.util.UUID;
-
-@Path("/ai")
+@Path("/api")
 public class AGIResource {
 
     @Inject
-    PromptService promptService;
+    MessageService promptService;
 
-
-    // Gets a message by id
-    @GET
-    @Path("/{id}")
-    @Produces(MediaType.TEXT_PLAIN)
-    public Response getPrompt(UUID id) {
-        Prompt prompt = promptService.findPromptById(id);
-
-        if (prompt != null) {
-            return Response.ok(prompt).build();
-        } else {
-            return Response.status(Response.Status.NOT_FOUND).build();
-        }
-    }
-
+    //Sends a message to the server and recives an answer.
+    @Path("/chat")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public UUID sendPrompt(Prompt prompt) {
+    public Message sendMessage(@HeaderParam("apiKey") String apiKey, @HeaderParam("conversationID") String conversationID, Message message) {
 
-        System.out.println(prompt);
-        return promptService.addPrompt(prompt);
+        System.out.println(apiKey+conversationID);
+        System.out.println(message);
+        return promptService.addMessage(message);
     }
+
+    //Request the conversation history from the server.
+    //TODO: Model has to send back the conversationID
+    //TODO: Implement logic
+    @GET
+    @Path("/{id}")
+    @Produces(MediaType.TEXT_PLAIN)
+    public String getHistory(@HeaderParam("apiKey") String apiKey, @HeaderParam("conversationID") String conversationID, Generate generate) {
+
+        System.out.println(apiKey+conversationID);
+        System.out.println(generate);
+        return "functions";
+    }
+
+
+
 }

@@ -14,21 +14,18 @@ val quarkusPlatformVersion: String by project
 
 dependencies {
     implementation(enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}"))
-    implementation("io.quarkus:quarkus-resteasy-reactive")
-    implementation("io.quarkus:quarkus-jackson")
     implementation("io.quarkus:quarkus-arc")
-    implementation("io.quarkus:quarkus-resteasy-reactive-jackson")
-    implementation("io.quarkus:quarkus-agroal:3.2.0.Final")
-// https://mvnrepository.com/artifact/io.quarkus/quarkus-hibernate-orm-panache
-    implementation("io.quarkus:quarkus-hibernate-orm-panache:3.2.0.Final")
-// https://mvnrepository.com/artifact/io.quarkus/quarkus-jdbc-postgresql
+    implementation("io.quarkus:quarkus-resteasy-reactive")
+    implementation("io.quarkus:quarkus-hibernate-orm-panache:3.4.3")
     implementation("io.quarkus:quarkus-jdbc-postgresql:3.2.0.Final")
     implementation("io.quarkus:quarkus-narayana-jta")
-    testImplementation("io.rest-assured:rest-assured")
-    //Test Dependencies
-    testImplementation("org.testcontainers:postgresql:1.6.0")
-    testImplementation("io.quarkus:quarkus-junit5")
+    implementation("io.quarkus:quarkus-resteasy-reactive")
+    implementation("io.quarkus:quarkus-resteasy-reactive-jackson")
+    implementation("io.quarkus:quarkus-agroal:3.2.0.Final")
+    implementation("io.quarkus:quarkus-rest-client-reactive-jackson")
 
+    testImplementation("io.quarkus:quarkus-junit5")
+    testImplementation("io.rest-assured:rest-assured")
 }
 
 group = "com.example"
