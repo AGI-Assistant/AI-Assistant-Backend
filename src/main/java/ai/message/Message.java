@@ -20,6 +20,7 @@ public class Message extends PanacheEntityBase {
     private Boolean isUser;
     private String textContent;
 
+    @Column(name = "timestamp", updatable = false, nullable = false)
     private long timestamp;
 
 
@@ -59,6 +60,10 @@ public class Message extends PanacheEntityBase {
 
     public void setTextContent(String prompt) {
         this.textContent = prompt;
+    }
+
+    public long getTimestamp() {
+        return timestamp;
     }
 
 

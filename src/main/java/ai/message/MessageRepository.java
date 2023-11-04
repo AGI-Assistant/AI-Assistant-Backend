@@ -3,6 +3,7 @@ package ai.message;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 
+import java.util.List;
 import java.util.UUID;
 
 @ApplicationScoped
@@ -16,4 +17,7 @@ public class MessageRepository implements PanacheRepository<Message> {
     }
 
 
+    public List<Message> findMessagesByConversationID(UUID conversationID) {
+        return find("conversationID", conversationID).list();
+    }
 }
