@@ -3,6 +3,7 @@ package ai;
 import ai.dto.History;
 import ai.message.Message;
 import ai.message.MessageService;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
@@ -36,12 +37,13 @@ public class AGIResource {
     @Path("/get/polling")
     @Produces(MediaType.TEXT_PLAIN)
     public Response startPolling() {
-try {
-    return Response.ok(messageService.startPolling()).build();
-}
-catch (Exception e){
+if (messageService.startPolling().isEmpty()){
     return Response.noContent().build();
 }
+
+    return Response.ok(messageService.startPolling()).build();
+
+
 }
 
 
@@ -51,10 +53,10 @@ catch (Exception e){
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response sendMessage(Message message) {
+    public Response sendMessage(Message message) throws JsonProcessingException {
 
         message.setConversationID(uuid);
-
+        System.out.println(message);
         messageService.addMessage(message);
 
         return Response.created(null).build();

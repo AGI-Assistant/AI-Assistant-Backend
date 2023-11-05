@@ -84,9 +84,9 @@ public class Message extends PanacheEntityBase {
 
     @Override
     public String toString() {
-        return "Prompt{" +
+        return "Message{" +
                 "isUser='" + isUser + '\'' +
-                ", prompt='" + textContent + '\'' +
+                ", textContent='" + textContent + '\'' +
                 '}';
     }
 

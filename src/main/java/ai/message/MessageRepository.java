@@ -21,3 +21,5 @@ public class MessageRepository implements PanacheRepository<Message> {
         return find("conversationID", conversationID).list();
     }
 }
+
+// convo in SQL, Message in MongoDB
