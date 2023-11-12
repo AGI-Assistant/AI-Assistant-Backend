@@ -5,6 +5,7 @@ package ai.message;
 import ai.dto.Content;
 import ai.client.AiModelClient;
 import ai.dto.Generate;
+import ai.dto.History;
 import io.quarkus.hibernate.orm.panache.Panache;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
@@ -13,6 +14,8 @@ import jakarta.transaction.Transactional;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @ApplicationScoped
@@ -53,6 +56,19 @@ return aiResponse;
         return aiModelClient.generate(new Generate(prompt));
     }
 
+    public History getHistory(UUID conversationID) {
+
+        return new History(conversationID, messageRepository.findMessagesByConversationID(conversationID));
+    }
+
+    public List<History> startPolling() {
+
+        List<History> histories = new ArrayList<>();
+      messageRepository.findAll().list().forEach(message -> histories.add(new History(message.getConversationID(),
+              messageRepository.findMessagesByConversationID(message.getConversationID()))));
+        return histories;
+
+    }
 
 
 

@@ -20,6 +20,7 @@ public class Message extends PanacheEntityBase {
     private Boolean isUser;
     private String textContent;
 
+    @Column(name = "timestamp", updatable = false, nullable = false)
     private long timestamp;
 
 
@@ -61,6 +62,10 @@ public class Message extends PanacheEntityBase {
         this.textContent = prompt;
     }
 
+    public long getTimestamp() {
+        return timestamp;
+    }
+
 
 
     public UUID getMessageID() {
@@ -79,9 +84,9 @@ public class Message extends PanacheEntityBase {
 
     @Override
     public String toString() {
-        return "Prompt{" +
+        return "Message{" +
                 "isUser='" + isUser + '\'' +
-                ", prompt='" + textContent + '\'' +
+                ", textContent='" + textContent + '\'' +
                 '}';
     }
 

@@ -19,8 +19,8 @@ public class Generate  {
 
     @Override
     public String toString() {
-        return "Prompt{" +
-                ", prompt='" + prompt + '\'' +
+        return "{" +
+                "prompt='" + prompt + '\'' +
                 '}';
     }
 }
