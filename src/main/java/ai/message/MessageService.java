@@ -2,11 +2,12 @@ package ai.message;
 
 
 
-import ai.dto.Content;
+
 import ai.client.AiModelClient;
+
+import ai.dto.Content;
 import ai.dto.Generate;
 import ai.dto.History;
-import io.quarkus.hibernate.orm.panache.Panache;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
@@ -32,24 +33,34 @@ public class MessageService {
 
 
     //Persist Messages
-    @Transactional
+
     public Message addMessage(Message message) {
 
-        EntityManager entityManager = Panache.getEntityManager();
 
+
+
+       messageRepository.persist(message);
         //TODO check if it works with The AiModel
         //TODO uncomment to test it with the ai model
-        Content response = requestAiModel(message.getTextContent());
+        Content response = requestAiModel(message.getText());
 
         //TODO implement messageID
-        //Uncomment this to test it with the ai model
+       // Uncomment this to test it with the ai model
         Message aiResponse = new Message(response.getContent(), false, System.currentTimeMillis() / 1000L );
-        entityManager.merge(aiResponse);
+        messageRepository.persist(aiResponse);
 
-         entityManager.merge(message);
-return aiResponse;
+
+
+        return aiResponse;
 
     }
+
+    public List<Message> getAllMessagesByConvID(UUID conversationID) {
+
+        return messageRepository.findMessagesByConversationID(conversationID.toString());
+    }
+
+
 
     private Content requestAiModel(String prompt){
 
@@ -58,13 +69,13 @@ return aiResponse;
 
     public History getHistory(UUID conversationID) {
 
-        return new History(conversationID, messageRepository.findMessagesByConversationID(conversationID));
+        return new History(conversationID, messageRepository.findMessagesByConversationID(conversationID.toString()));
     }
 
     public List<History> startPolling() {
 
         List<History> histories = new ArrayList<>();
-      messageRepository.findAll().list().forEach(message -> histories.add(new History(message.getConversationID(),
+      messageRepository.findAll().list().forEach(message -> histories.add(new History(UUID.fromString(message.getConversationID()),
               messageRepository.findMessagesByConversationID(message.getConversationID()))));
         return histories;
 

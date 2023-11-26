@@ -1,6 +1,6 @@
 package ai;
 
-import ai.dto.History;
+
 import ai.message.Message;
 import ai.message.MessageService;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -22,7 +22,7 @@ public class AGIResource {
 
 
 
-    @GET
+ /*   @GET
     @Path("/get/history")
     @Produces(MediaType.TEXT_PLAIN)
     public History getChatHistory(@HeaderParam("conversationID") String conversationID) {
@@ -30,10 +30,10 @@ public class AGIResource {
 
 
         return messageService.getHistory(uuid);
-    }
+    }*/
 
     //TODO: Need a way to know which messages are new. Timestamp send from the last message the frontend has read?
-    @GET
+/*    @GET
     @Path("/get/polling")
     @Produces(MediaType.TEXT_PLAIN)
     public Response startPolling() {
@@ -44,7 +44,7 @@ if (messageService.startPolling().isEmpty()){
     return Response.ok(messageService.startPolling()).build();
 
 
-}
+}*/
 
 
     //TODO 201
@@ -53,13 +53,17 @@ if (messageService.startPolling().isEmpty()){
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response sendMessage(Message message) throws JsonProcessingException {
+    public Message sendMessage(Message message) throws JsonProcessingException {
 
         message.setConversationID(uuid);
         System.out.println(message);
-        messageService.addMessage(message);
+        System.out.println(message.getText());
+        System.out.println(message.getIsUser());
+        System.out.println(message.getConversationID());
+        System.out.println(message.getTimestamp());
 
-        return Response.created(null).build();
+
+        return messageService.addMessage(message);
     }
 
 

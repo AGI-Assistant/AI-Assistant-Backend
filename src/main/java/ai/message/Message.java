@@ -1,42 +1,38 @@
 package ai.message;
 
-import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
-import jakarta.persistence.*;
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.generator.BeforeExecutionGenerator;
+import io.quarkus.mongodb.panache.PanacheMongoEntity;
+import io.quarkus.mongodb.panache.PanacheMongoEntityBase;
+import org.bson.codecs.pojo.annotations.BsonId;
 
 import java.util.UUID;
 
-@Entity
-@Table(name = "messages")
-public class Message extends PanacheEntityBase {
 
-    @Id
-    @GeneratedValue(generator = "UUID")
-    @GenericGenerator(name = "uuid", type = BeforeExecutionGenerator.class)
-    @Column(name = "id", updatable = false, nullable = false)
-    private UUID messageID;
-    private UUID conversationID;
+
+
+
+public class Message extends PanacheMongoEntityBase {
+
+
+    @BsonId
+    private String conversationID;
     private Boolean isUser;
-    private String textContent;
+    private String text;
 
-    @Column(name = "timestamp", updatable = false, nullable = false)
+
     private long timestamp;
 
 
     public Message( String textContent, Boolean isUser, long timestamp) {
-        this.messageID = UUID.randomUUID();
         this.isUser = isUser;
-        this.textContent = textContent;
+        this.text = textContent;
         this.timestamp = timestamp;
 
     }
 
     public Message( String textContent, Boolean isUser, UUID conversationID) {
-        this.messageID = UUID.randomUUID();
         this.isUser = isUser;
-        this.textContent = textContent;
-        this.conversationID = conversationID;
+        this.text = textContent;
+        this.conversationID = conversationID.toString();
         this.timestamp = System.currentTimeMillis() / 1000L;
 
     }
@@ -46,7 +42,6 @@ public class Message extends PanacheEntityBase {
 
 
     public Message() {
-        this.messageID = UUID.randomUUID();
         this.timestamp = System.currentTimeMillis() / 1000L;
     }
 
@@ -54,30 +49,31 @@ public class Message extends PanacheEntityBase {
         return isUser;
     }
 
-    public String getTextContent() {
-        return textContent;
+    public void setIsUser(Boolean isUser) {
+        this.isUser = isUser;
     }
 
-    public void setTextContent(String prompt) {
-        this.textContent = prompt;
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String prompt) {
+        this.text = prompt;
     }
 
     public long getTimestamp() {
         return timestamp;
     }
 
-
-
-    public UUID getMessageID() {
-        return messageID;
+    public void setTimestamp(long timestamp) {
+        this.timestamp = timestamp;
     }
 
-    public void setMessageID(UUID id) {
-        this.messageID = id;
-    }
+
+
 
     public void setConversationID(UUID id) {
-        this.conversationID = id;
+        this.conversationID = id.toString();
     }
 
 
@@ -86,11 +82,11 @@ public class Message extends PanacheEntityBase {
     public String toString() {
         return "Message{" +
                 "isUser='" + isUser + '\'' +
-                ", textContent='" + textContent + '\'' +
+                ", textContent='" + text + '\'' +
                 '}';
     }
 
-    public UUID getConversationID() {
+    public String getConversationID() {
         return this.conversationID;
     }
 }

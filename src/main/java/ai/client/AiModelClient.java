@@ -5,8 +5,10 @@ package ai.client;
 
 
 
+
 import ai.dto.Content;
 import ai.dto.Generate;
+import ai.message.Message;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
@@ -23,5 +25,6 @@ import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 public interface AiModelClient {
 
     @POST
+
     Content generate(Generate content);
 }

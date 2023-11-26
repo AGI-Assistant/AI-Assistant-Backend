@@ -1,28 +1,44 @@
-version: "3.3"
-name: postgres
-
-networks:
-  redpanda-network:
-    name: redpanda-network
-    driver: bridge
+version: '3.8'
 
 services:
-  db:
-    image: postgres
+  rdb:
+    image: mariadb
     restart: always
     environment:
-      POSTGRES_PASSWORD: example
-      POSTGRES_USER: example
-      POSTGRES_DB: example
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: example
+      MYSQL_USER: example
+      MYSQL_PASSWORD: example
     ports:
-      - "5432:5432"
-    networks:
-      - redpanda-network
+      - "3306:3306"
 
-  adminer:
-    image: adminer
-    restart: always
+  mongodb:
+    image: mongo:5
+    command: --replSet rs0
     ports:
-      - 8081:8081
-    networks:
-      - redpanda-network
+      - "28017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: attachment-api-local-dev
+    healthcheck:
+      # use 'mongo' instead of 'mongosh' if MongoDB version is lower than 5
+      test: mongosh --eval 'db.runCommand("ping").ok' localhost:27017/test --quiet
+      interval: 2s
+      timeout: 3s
+      retries: 5
+
+  mongo-init:
+    image: mongo:5
+    restart: "no"
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    command: >
+      mongo --host mongodb:27017 --eval
+      '
+      rs.initiate( {
+         _id : "rs0",
+         members: [
+            { _id: 0, host: "localhost:27017" }
+         ]
+      })
+      '

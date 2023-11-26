@@ -16,13 +16,17 @@ dependencies {
     implementation(enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}"))
     implementation("io.quarkus:quarkus-arc")
     implementation("io.quarkus:quarkus-resteasy-reactive")
-    implementation("io.quarkus:quarkus-hibernate-orm-panache:3.4.3")
-    implementation("io.quarkus:quarkus-jdbc-postgresql:3.2.0.Final")
+    implementation("io.quarkus:quarkus-hibernate-orm-panache:3.2.0.Final")
     implementation("io.quarkus:quarkus-narayana-jta")
     implementation("io.quarkus:quarkus-resteasy-reactive")
     implementation("io.quarkus:quarkus-resteasy-reactive-jackson")
     implementation("io.quarkus:quarkus-agroal:3.2.0.Final")
+
     implementation("io.quarkus:quarkus-rest-client-reactive-jackson")
+    implementation("io.quarkus:quarkus-mongodb-panache")
+
+    implementation("io.quarkus:quarkus-jdbc-mariadb")
+
 
     testImplementation("io.quarkus:quarkus-junit5")
     testImplementation("io.rest-assured:rest-assured")

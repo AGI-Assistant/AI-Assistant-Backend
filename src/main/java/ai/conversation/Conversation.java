@@ -16,16 +16,17 @@ public class Conversation extends PanacheEntityBase {
     @GenericGenerator(name = "uuid", type = BeforeExecutionGenerator.class)
     @Column(name = "id", updatable = false, nullable = false)
     private UUID conversationID;
+    private String name;
+    private String summery;
 
-    private String title;
-    private String content;
+    private UUID userID;
 
 
 
     public Conversation(String title, String content){
         this.conversationID = UUID.randomUUID();
-        this.title = title;
-        this.content = content;
+        this.name = title;
+        this.summery = content;
 
     }
 
@@ -33,20 +34,20 @@ public class Conversation extends PanacheEntityBase {
         this.conversationID = UUID.randomUUID();
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String title) {
+        this.name = title;
     }
 
-    public String getContent() {
-        return content;
+    public String getSummery() {
+        return summery;
     }
 
-    public void setContent(String message) {
-        this.content = message;
+    public void setSummery(String message) {
+        this.summery = message;
     }
 
 
@@ -59,11 +60,20 @@ public class Conversation extends PanacheEntityBase {
         this.conversationID = id;
     }
 
+    public UUID getUserID() {
+        return userID;
+    }
+
+    public void setUserID(UUID id) {
+        this.userID = id;
+    }
+
+
     @Override
     public String toString() {
         return "Message{" +
-                "username='" + title + '\'' +
-                ", content='" + content + '\'' +
+                "username='" + name + '\'' +
+                ", content='" + summery + '\'' +
                 '}';
     }
 }

@@ -1,5 +1,7 @@
 package ai.conversation;
 
+import ai.message.Message;
+import ai.message.MessageService;
 import io.quarkus.hibernate.orm.panache.Panache;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
@@ -12,6 +14,7 @@ import java.util.UUID;
 
 @ApplicationScoped
 public class ConversationService {
+    MessageService messageService;
 
 
     @Inject
@@ -21,10 +24,10 @@ public class ConversationService {
     @Transactional
     public UUID addConversation(Conversation conversation) {
 
-        EntityManager entityManager = Panache.getEntityManager();
-        entityManager.persist(conversation);
 
-        Conversation persistedConversation = entityManager.find(Conversation.class, conversation.getConversationID());
+        conversationRepository.persist(conversation);
+
+        Conversation persistedConversation = findConversationByID(conversation.getConversationID());
 
         return persistedConversation.getConversationID();
     }
@@ -37,16 +40,8 @@ public class ConversationService {
     }
 
     //Get all Messages filtered by ConversationID
-    public List<Conversation> getAllMessagesByConvID(UUID conversationID) {
+    public List<Message> getAllMessagesByConvID(UUID conversationID) {
 
-        //TODO not efficient, implement filtering
-        List<Conversation> messages = conversationRepository.listAll();
-        List<Conversation> conversation = new ArrayList<>();
-        for (Conversation message : messages) {
-            if (message.getConversationID().equals(conversationID)) {
-                conversation.add(message);
-            }
-        }
-        return conversation;
+        return messageService.getAllMessagesByConvID(conversationID);
     }
 }
